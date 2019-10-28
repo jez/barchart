@@ -1,0 +1,26 @@
+language: rust
+cache: cargo
+
+os:
+  - linux
+  - osx
+
+# install:
+#   - cargo build
+
+# script:
+#   - cargo build && cargo test
+
+before_deploy:
+  - cargo install --path .
+  - cd "$HOME/.cargo/bin" && zip "barchart-${TRAVIS_TAG}-${TRAVIS_OS_NAME}.zip" ./barchart
+
+# Created with 'travis setup releases'
+deploy:
+  provider: releases
+  api_key:
+    secure: Ay0xQi4TizQol8CGex+jwekwufIAcofhwMpByGFh23GNqhzpIO2xwGGcjPt6DMV4V7+eJUOqBMP3QL9eP9EuIkdC4JPy/SaLNJYCQ5nvsN2cSRqV4nhwFcfkCLLBxdlWug+rQnN5dEhAg+Lpx8oQXX7Jy8mEPqfWVZDqNIMWITVnwUGsT+9hqw4ZwGwldvXK946PjGDPsFjtZKCgDViVe7Yu/SCrikmNhqNY+zMFjALV4NTa9GGqAj26zwY6Xu1GVOC91jfE4Zjrbr9yUaCuFkwgILejkaI+zLr9/+RJjvymArvQb6k+u0qI+OODxnTp8alKH/nb5l+GRF+ROw3QrQ6n3qfD6Y2qOq3DHcvNdgQiXIAJ/ysfl+0yu1jisbrnSNqEUaJt7gJ07mjyNxnpus7WfupZi5rpDkI9+uQekOSpyD48kx9Is5UwsBkzvNRTf0wL8TQSVni/n4ycXffGAUdwQYTIEkDnGgPnqlHMdt/g6PLpNhITMZz7gMbWhpB5NLArXer/c9M4EMByV8Fc8zU+UOmvofC8g86Ax7gbOWN7PsOqlaApRGGIct6rdd9XYYmdn75PtYd2szDZB3UeUNesWOSXgBcUy6tkbsfoYg/UBx4KcrWa9GG4hWJy9VM81FXqmVYNIgAjVAetFqSOGEjHP3lslUo4XENwFYhyzNk=
+  file: "$HOME/.cargo/bin/barchart-${TRAVIS_TAG}-${TRAVIS_OS_NAME}.zip"
+  on:
+    tags: true
+    repo: jez/barchart
