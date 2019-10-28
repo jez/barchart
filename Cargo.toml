@@ -1,0 +1,10 @@
+[package]
+name = "barchart"
+version = "0.1.0"
+authors = ["Jake Zimmerman <zimmerman.jake@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+docopt = "1"
+serde = { version = "1", features = ["derive"] }
+regex = "1"
