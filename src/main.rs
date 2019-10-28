@@ -51,7 +51,7 @@ fn main() -> io::Result<()> {
         .and_then(|d| d.deserialize())
         .unwrap_or_else(|e| e.exit());
 
-    let reader: Box<BufRead> = match options.arg_filename {
+    let reader: Box<dyn BufRead> = match options.arg_filename {
         None => Box::new(BufReader::new(io::stdin())),
         Some(filename) => Box::new(BufReader::new(fs::File::open(filename)?)),
     };
