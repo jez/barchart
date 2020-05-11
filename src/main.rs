@@ -67,7 +67,7 @@ fn main() -> io::Result<()> {
                 process::exit(1);
             }
             Some(caps) => {
-                let count = caps[1].parse::<usize>().unwrap();
+                let count = caps[1].parse().unwrap();
                 let text = caps[2].to_string();
                 data.push(Entry { count, text });
             }
