@@ -16,7 +16,7 @@ label 2          9 ██████████████
 something else  31 ███████████████████████████████████████████████
 ```
 
-See `barchart --help` for full options.
+Can also read data from stdin. See `barchart --help` for full options.
 
 ## Install
 
