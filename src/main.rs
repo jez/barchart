@@ -90,7 +90,7 @@ fn main() -> io::Result<()> {
         .map(|entry| entry.count)
         .fold(usize::MIN, |max, curr| cmp::max(max, curr));
 
-    let max_digits = (max_count as f64).log10().ceil() as usize;
+    let max_digits = ((max_count + 1) as f64).log10().ceil() as usize;
 
     let max_label_width = max_text_len + 2 + max_digits + 1;
     let max_width = if max_label_width >= options.flag_width {
