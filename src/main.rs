@@ -21,7 +21,6 @@ Options:
   -h, --help    Show this help message.
   --width=<n>   Restrict output to <n> characters. [default: 80]
   --bar=<char>  Use <char> to draw the bars. [default: █]
-  --sort        Sort the list in descending order.
 
 Input format:
   <count> <text>
